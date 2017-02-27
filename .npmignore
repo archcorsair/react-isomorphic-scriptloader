@@ -1,5 +1,7 @@
 .idea/
 node_modules
-/lib
+spec/
+src/
 *.DS_Store
-spec/fixtures/ignored
+decls
+.flowconfig
