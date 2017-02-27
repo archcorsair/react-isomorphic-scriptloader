@@ -1,6 +1,6 @@
 {
   "name": "react-isomorphic-scriptloader",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Load scripts with ease",
   "main": "lib/index.js",
   "scripts": {
@@ -14,16 +14,16 @@
     "url": "https://github.com/archcorsair/react-isomorphic-scriptloader"
   },
   "keywords": [
-    "react", "scripts", "loader"
+    "react",
+    "scripts",
+    "loader"
   ],
   "author": "Daniel S <archcorsair@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/archcorsair/react-isomorphic-scriptloader/issues"
   },
-  "dependencies": {
-
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-preset-steelbrain": "^4.0.2",
