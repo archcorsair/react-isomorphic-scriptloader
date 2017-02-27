@@ -3,7 +3,7 @@
 import React from 'react'
 
 class ScriptLoader extends React.Component {
-  propTypes = {
+  static propTypes = {
     src: React.PropTypes.string.isRequired,
     onLoad: React.PropTypes.func.isRequired,
   };
