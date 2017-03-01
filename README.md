@@ -1,6 +1,6 @@
 # React Isomorphic ScriptLoader
 
-React package to isomorphically load scripts into your webapp.
+React package to load scripts into your isomorphic (server side rendered) webapp.
 
 ## Installation
 ```
