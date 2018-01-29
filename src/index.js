@@ -1,11 +1,12 @@
 // @flow
 
 import React from 'react'
+import PropTypes from 'prop-types';
 
 class ScriptLoader extends React.Component {
   static propTypes = {
-    src: React.PropTypes.string.isRequired,
-    onLoad: React.PropTypes.func.isRequired,
+    src: PropTypes.string.isRequired,
+    onLoad: PropTypes.func.isRequired,
   };
   loadFired: boolean;
   invokeOnLoad() {

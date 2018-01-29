@@ -23,7 +23,9 @@
   "bugs": {
     "url": "https://github.com/archcorsair/react-isomorphic-scriptloader/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.6.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-preset-steelbrain": "^4.0.2",
