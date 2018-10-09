@@ -1,3 +1,4 @@
 {
-  "extends": "steelbrain"
+  "extends": "steelbrain",
+  "rules": {"semi": ["error", "never"]}
 }
