@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { ReactElement, useEffect, useState } from 'react'
 
-export default function ScriptLoader({ src, onLoad }) {
-  const [loadFired, setLoadFired] = useState(false)
+interface Props {
+  src: string
+  onLoad: () => void
+}
+
+export default function ScriptLoader({ src, onLoad }: Props): ReactElement {
+  const [loadFired, setLoadFired] = useState<boolean>(false)
   useEffect(() => {
     const invokeOnLoad = () => {
       if (!loadFired) {
@@ -12,21 +16,16 @@ export default function ScriptLoader({ src, onLoad }) {
         }, 0)
       }
     }
-    const scripts = Array.from(document.querySelectorAll('script'))
+    const scripts: HTMLScriptElement[] = Array.from(document.querySelectorAll('script'))
     if (scripts.find((script) => script.src === src)) {
       invokeOnLoad()
       return
     }
-    const script = document.createElement('script')
+    const script: HTMLScriptElement = document.createElement('script')
     script.src = src
-    script.onLoad = () => invokeOnLoad()
+    script.onload = () => invokeOnLoad()
     document.body.appendChild(script)
   }, [src, onLoad, loadFired])
 
   return <span style={{ display: 'none' }} data-purpose="Dummy element created by react-isomorphic-scriptloader" />
-}
-
-ScriptLoader.propTypes = {
-  src: PropTypes.string.isRequired,
-  onLoad: PropTypes.func.isRequired,
 }
