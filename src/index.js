@@ -1,40 +1,32 @@
-// @flow
-
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
-class ScriptLoader extends React.Component {
-  static propTypes = {
-    src: PropTypes.string.isRequired,
-    onLoad: PropTypes.func.isRequired,
-  }
-
-  componentDidMount() {
-    const { src: scriptSrc } = this.props
+export default function ScriptLoader({ src, onLoad }) {
+  const [loadFired, setLoadFired] = useState(false)
+  useEffect(() => {
+    const invokeOnLoad = () => {
+      if (!loadFired) {
+        setTimeout(() => {
+          setLoadFired(true)
+          onLoad()
+        }, 0)
+      }
+    }
     const scripts = Array.from(document.querySelectorAll('script'))
-    if (scripts.find(script => script.src === scriptSrc)) {
-      this.invokeOnLoad()
+    if (scripts.find((script) => script.src === src)) {
+      invokeOnLoad()
       return
     }
     const script = document.createElement('script')
-    script.src = scriptSrc
-    script.onload = () => this.invokeOnLoad()
+    script.src = src
+    script.onLoad = () => invokeOnLoad()
     document.body.appendChild(script)
-  }
-  loadFired: boolean
-  invokeOnLoad() {
-    if (!this.loadFired) {
-      setTimeout(() => {
-        this.loadFired = true
-        const { onLoad } = this.props
-        onLoad()
-      }, 0)
-    }
-  }
+  }, [src, onLoad, loadFired])
 
-  render() {
-    return <span style={{ display: 'none' }} data-purpose="Dummy element created by react-isomorphic-scriptloader" />
-  }
+  return <span style={{ display: 'none' }} data-purpose="Dummy element created by react-isomorphic-scriptloader" />
 }
 
-module.exports = ScriptLoader
+ScriptLoader.propTypes = {
+  src: PropTypes.string.isRequired,
+  onLoad: PropTypes.func.isRequired,
+}
