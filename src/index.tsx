@@ -1,31 +1,22 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactNode, useEffect } from 'react'
 
 interface Props {
   src: string
   onLoad: () => void
 }
 
-export default function ScriptLoader({ src, onLoad }: Props): ReactElement {
-  const [loadFired, setLoadFired] = useState<boolean>(false)
+export default function ScriptLoader({ src, onLoad }: Props): ReactNode {
   useEffect(() => {
-    const invokeOnLoad = () => {
-      if (!loadFired) {
-        setTimeout(() => {
-          setLoadFired(true)
-          onLoad()
-        }, 0)
-      }
-    }
     const scripts: HTMLScriptElement[] = Array.from(document.querySelectorAll('script'))
     if (scripts.find((script) => script.src === src)) {
-      invokeOnLoad()
+      onLoad()
       return
     }
     const script: HTMLScriptElement = document.createElement('script')
     script.src = src
-    script.onload = () => invokeOnLoad()
+    script.onload = onLoad
     document.body.appendChild(script)
-  }, [src, onLoad, loadFired])
+  }, [src, onLoad])
 
   return <span style={{ display: 'none' }} data-purpose="Dummy element created by react-isomorphic-scriptloader" />
 }
