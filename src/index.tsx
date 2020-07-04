@@ -16,7 +16,7 @@ export default function ScriptLoader({ src, onLoad }: Props): ReactNode {
     script.src = src
     script.onload = onLoad
     document.body.appendChild(script)
-  }, [src, onLoad])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return <span style={{ display: 'none' }} data-purpose="Dummy element created by react-isomorphic-scriptloader" />
 }
