@@ -5,6 +5,9 @@
   "main": "lib/index.js",
   "typings": "lib/typings/index.d.ts",
   "module": "lib/esm/index.js",
+  "files": [
+    "lib/*"
+  ],
   "scripts": {
     "lint": "(tsc -p . --noEmit) && (eslint . --ext .ts --ext .tsx) && (prettier -l src/*.tsx)",
     "prepare": "yarn build:clean ; yarn build:esm ; yarn build:cjs ; yarn build:typings",
