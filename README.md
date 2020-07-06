@@ -4,7 +4,7 @@ React package to load scripts into your isomorphic (server side rendered) webapp
 
 ## Installation
 ```
-npm install --save react-isomorphic-scriptloader
+yarn add react-isomorphic-scriptloader
 ```
 
 ## Example Usage
