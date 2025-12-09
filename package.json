@@ -1,6 +1,6 @@
 {
   "name": "react-isomorphic-scriptloader",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Load scripts with ease",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -37,7 +37,7 @@
     "url": "https://github.com/archcorsair/react-isomorphic-scriptloader/issues"
   },
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "react": ">=16.8.0 || >=19.0.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.3.0",
