@@ -1,13 +1,20 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node",
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "esnext",
     "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
     "strict": true,
-    "jsx": "preserve",
-    "lib": ["es2015", "es2016", "es2017", "es2018", "esnext", "dom"]
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }

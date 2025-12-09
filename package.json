@@ -2,19 +2,25 @@
   "name": "react-isomorphic-scriptloader",
   "version": "2.0.0",
   "description": "Load scripts with ease",
-  "main": "lib/index.js",
-  "typings": "lib/typings/index.d.ts",
-  "module": "lib/esm/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
-    "lib/*"
+    "dist"
   ],
   "scripts": {
-    "lint": "(tsc -p . --noEmit) && (eslint . --ext .ts --ext .tsx) && (prettier -l src/*.tsx)",
-    "prepare": "yarn build:clean ; yarn build:esm ; yarn build:cjs ; yarn build:typings",
-    "build:esm": "tsc --module es2015 --target es2018 --outDir lib/esm",
-    "build:cjs": "tsc --module commonjs --target es5 --outDir lib/cjs",
-    "build:clean": "rm -rf lib",
-    "build:typings": "tsc --declaration --outDir lib/typings --emitDeclarationOnly"
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -30,28 +36,25 @@
   "bugs": {
     "url": "https://github.com/archcorsair/react-isomorphic-scriptloader/issues"
   },
-  "dependencies": {},
-  "devDependencies": {
-    "@types/react": "^16.9.41",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
-    "eslint": "7.2.0",
-    "eslint-config-airbnb": "18.2.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jsx-a11y": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "4.0.0",
-    "jasmine-fix": "^1.3.1",
-    "prettier": "^2.0.5",
-    "typescript": "^3.9.6"
-  },
   "peerDependencies": {
-    "react": "*"
+    "react": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "jsdom": "^24.0.0",
+    "prettier": "^3.0.0",
+    "react": "^19.2.1",
+    "react-dom": "^19.2.1",
+    "tsup": "^8.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^7.0.0",
+    "vitest": "^4.0.15"
   },
   "engines": {
-    "node": ">= 8"
+    "node": ">=18"
   }
 }

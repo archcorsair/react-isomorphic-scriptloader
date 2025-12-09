@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react'
+import { type ReactNode, useEffect } from 'react'
 
 interface Props {
   src: string
@@ -7,16 +7,16 @@ interface Props {
 
 export default function ScriptLoader({ src, onLoad }: Props): ReactNode {
   useEffect(() => {
-    const scripts: HTMLScriptElement[] = Array.from(document.querySelectorAll('script'))
+    const scripts = Array.from(document.querySelectorAll('script'))
     if (scripts.find((script) => script.src === src)) {
       onLoad()
       return
     }
-    const script: HTMLScriptElement = document.createElement('script')
+    const script = document.createElement('script')
     script.src = src
-    script.onload = onLoad
+    script.onload = () => onLoad()
     document.body.appendChild(script)
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [src, onLoad])
 
   return <span style={{ display: 'none' }} data-purpose="Dummy element created by react-isomorphic-scriptloader" />
 }
