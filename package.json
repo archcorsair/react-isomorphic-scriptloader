@@ -1,6 +1,6 @@
 {
   "name": "react-isomorphic-scriptloader",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Load scripts with ease",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
